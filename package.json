@@ -1,0 +1,43 @@
+{
+  "name": "@nxus/oauth",
+  "version": "2.4.0-0",
+  "description": "An OAuth Manager for Nxus Applications.",
+  "main": "lib",
+  "scripts": {
+    "test": "NODE_ENV=test mocha --compilers js:babel/register -R spec",
+    "compile": "babel --optional runtime -d lib/ src/",
+    "prepublish": "npm run compile",
+    "postpublish": "npm run docs-readme && npm run commit-update-docs",
+    "docs-readme": "export NAME=`npm view . name`; export VERSION=`npm view . version`; documentation readme ./src/* --github --name $NAME --project-version $VERSION --readme-file ./README.md -s API",
+    "commit-update-docs": "git add ./README.md && git commit -m 'Updated README API Docs' && git push"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nxus/oauth.git"
+  },
+  "author": "mjreich",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nxus/oauth/issues"
+  },
+  "homepage": "https://github.com/nxus/oauth",
+  "dependencies": {
+    "babel-runtime": "^5.7.0",
+    "bluebird": "^3.3.3",
+    "passport": "^0.3.2",
+    "passport-twitter": "^1.0.4",
+    "underscore": "^1.8.3"
+  },
+  "peerDependencies": {
+    "@nxus/core": "^2.4.0-0"
+  },
+  "devDependencies": {
+    "@nxus/core": "^2.4.0-0",
+    "babel": "^5.6.23",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.2.0",
+    "mocha": "^2.4.5",
+    "should": "^7.0.2",
+    "sinon": "^1.17.2"
+  }
+}
