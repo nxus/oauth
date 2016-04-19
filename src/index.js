@@ -1,8 +1,8 @@
 /*
 * @Author: mike
 * @Date:   2016-04-17 08:07:35
-* @Last Modified 2016-04-18
-* @Last Modified time: 2016-04-18 15:42:10
+* @Last Modified 2016-04-19
+* @Last Modified time: 2016-04-19 11:24:16
 */
 
 'use strict';
@@ -36,7 +36,6 @@ export default class OAuth {
   _setupStrategies() {
     this._strategies.forEach((strategy) => {
       passport.use(strategy.client);
-      console.log('strategy', strategy)
       this.router.route('/auth/'+strategy.name, (req, res) => {
         strategy.opts.state = req.get('host')
         var host = URL.parse(strategy.opts.callbackURL).host
