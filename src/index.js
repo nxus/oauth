@@ -1,10 +1,31 @@
 /*
 * @Author: mike
 * @Date:   2016-04-17 08:07:35
-* @Last Modified 2016-04-19
-* @Last Modified time: 2016-04-19 11:24:16
+* @Last Modified 2016-05-20
+* @Last Modified time: 2016-05-20 08:48:59
 */
-
+/**
+ * [![Build Status](https://travis-ci.org/nxus/oauth.svg?branch=master)](https://travis-ci.org/nxus/oauth)
+ * 
+ * A module for integrating oauth sessions/accounts into your Nxus app.  By default, the twitter strategy is included.
+ * 
+ * ## Installation
+ * 
+ * ```bash
+ * > npm install nxus-oauth --save
+ * ```
+ * 
+ * ## Usage
+ * 
+ * ### Registering a Passport Strategy
+ * 
+ * ```javascript
+ * app.get('oauth').strategy('strategyName', myPassportStrategy.client, {someOpts});
+ * ```
+ * 
+ * # API
+ * ------
+ */
 'use strict';
 
 import passport from 'passport'
