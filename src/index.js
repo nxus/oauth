@@ -1,8 +1,8 @@
 /*
 * @Author: mike
 * @Date:   2016-04-17 08:07:35
-* @Last Modified 2016-05-20
-* @Last Modified time: 2016-05-20 08:48:59
+* @Last Modified 2016-08-08
+* @Last Modified time: 2016-08-08 16:58:53
 */
 /**
  * [![Build Status](https://travis-ci.org/nxus/oauth.svg?branch=master)](https://travis-ci.org/nxus/oauth)
@@ -57,7 +57,7 @@ export default class OAuth {
   _setupStrategies() {
     this._strategies.forEach((strategy) => {
       passport.use(strategy.client);
-      this.router.route('/auth/'+strategy.name, (req, res) => {
+      this.router.route('/auth/'+strategy.name, (req, res, next) => {
         strategy.opts.state = req.get('host')
         var host = URL.parse(strategy.opts.callbackURL).host
         if(!host)
@@ -65,7 +65,7 @@ export default class OAuth {
         req.session.oauthSuccessRedirect = req.param('redirect')
         this.app.log.debug('req.get(\'host\')', req.get('host'))
         this.app.log.debug('stragety.opts', strategy.opts)
-        passport.authorize(strategy.name, strategy.opts)(req, res) 
+        passport.authorize(strategy.name, strategy.opts)(req, res, next) 
       })
 
       this.router.getExpressApp().then((express) => {
