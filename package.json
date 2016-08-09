@@ -1,6 +1,6 @@
 {
   "name": "nxus-oauth",
-  "version": "3.0.0-0",
+  "version": "3.0.0-1",
   "description": "An OAuth Manager for Nxus Applications.",
   "main": "lib",
   "scripts": {
@@ -25,7 +25,7 @@
     "presets": [
       "es2015"
     ]
-  },  
+  },
   "dependencies": {
     "bluebird": "^3.3.3",
     "passport": "^0.3.2",
